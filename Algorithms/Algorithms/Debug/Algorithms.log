@@ -1,0 +1,4 @@
+﻿  Source.cpp
+c:\users\ade\documents\visual studio 2017\projects\algorithms\algorithms\fibonacci.h(15): warning C4101: 'fibonacci': unreferenced local variable
+  Algorithms.vcxproj -> C:\Users\ade\Documents\Visual Studio 2017\Projects\Algorithms\Debug\Algorithms.exe
+  Algorithms.vcxproj -> C:\Users\ade\Documents\Visual Studio 2017\Projects\Algorithms\Debug\Algorithms.pdb (Partial PDB)
