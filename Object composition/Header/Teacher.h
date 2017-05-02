@@ -1,0 +1,16 @@
+#pragma once
+#include <iostream>
+
+////////////////////////////////////////////////////////////
+
+class Teacher
+{
+private:
+	const std::string m_name;
+
+public:
+	Teacher(const char* name);
+	const char* getName()const;
+};
+
+////////////////////////////////////////////////////////////
