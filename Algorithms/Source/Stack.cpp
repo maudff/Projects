@@ -11,7 +11,7 @@ Stack::Stack(unsigned max) : m_top(-1), m_stack(new unsigned[max]), m_maxSize(ma
 
 void Stack::push(int number)
 {
-	if (m_top >= m_maxSize)
+	if (m_top == m_maxSize)
 	{
 		std::cout << "Stack is full" << std::endl;
 	}
@@ -50,6 +50,13 @@ unsigned Stack::peek()
 	{
 		return m_stack[m_top];
 	}
+}
+
+/////////////////////////////////////////////////////////////////////////
+
+bool Stack::isEmpty()
+{
+	return (m_top < 0) ? true : false;
 }
 
 /////////////////////////////////////////////////////////////////////////

@@ -16,7 +16,7 @@ Node::Node(const char* element) :m_key(0), m_element(element), m_next(NULL)
 
 ////////////////////////////////////////////////////////////
 
-Node::Node(unsigned adjacentNode) :m_key(0), m_element(""), m_next(NULL), m_adjacentVertex(adjacentNode)
+Node::Node(int adjacentNode) :m_key(0), m_element(""), m_next(NULL), m_adjacentVertex(adjacentNode)
 {
 
 }

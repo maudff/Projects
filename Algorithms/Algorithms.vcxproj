@@ -141,13 +141,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Header\AdjacentList.h" />
-    <ClInclude Include="Header\BFS.h" />
+    <ClInclude Include="Header\GraphTraversal.h" />
     <ClInclude Include="Header\BinarySearchAlgorithm.h" />
     <ClInclude Include="Header\BST.h" />
     <ClInclude Include="Header\Fibonacci.h" />
     <ClInclude Include="Header\HashTable.h" />
     <ClInclude Include="Header\InsertionSort.h" />
     <ClInclude Include="Header\Node.h" />
+    <ClInclude Include="Header\NQueue.h" />
     <ClInclude Include="Header\Queue.h" />
     <ClInclude Include="Header\QuickSort.h" />
     <ClInclude Include="Header\SinglyLL-Node.h" />
@@ -156,12 +157,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\AdjacentList.cpp" />
-    <ClCompile Include="Source\BFS.cpp" />
+    <ClCompile Include="Source\GraphTraversal.cpp" />
     <ClCompile Include="Source\BinarySearchAlgorithm.cpp" />
     <ClCompile Include="Source\BST.cpp" />
     <ClCompile Include="Source\HashTable.cpp" />
     <ClCompile Include="Source\InsertionSort.cpp" />
     <ClCompile Include="Source\Node.cpp" />
+    <ClCompile Include="Source\NQueue.cpp" />
     <ClCompile Include="Source\Queue.cpp" />
     <ClCompile Include="Source\Quicksort.cpp" />
     <ClCompile Include="Source\SinglyLL-Node.cpp" />

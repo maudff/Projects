@@ -7,6 +7,7 @@
 #include "AdjacentList.h"
 #include "BST.h"
 #include "Fibonacci.h"
+#include "GraphTraversal.h"
 
 int main()
 {
@@ -27,9 +28,14 @@ int main()
 	adjacent.addEdge(0, 2);
 	adjacent.addEdge(0, 3);
 	adjacent.addEdge(1, 4);
+	adjacent.addEdge(1, 5);
 	adjacent.addEdge(2, 6);
 	adjacent.addEdge(2, 7); 
 	adjacent.addEdge(3, 7);
+	Node* bNode = new Node(0);
+	Node adjNode(0);
+	GraphTraversal::BreadthFirstSearch(&adjacent, bNode);
+	GraphTraversal::DepthFirstSearch(adjacent, adjNode);
 	
 	/* Binary Search Tree*/
 	//////////////////////////////////////////////////////////////////

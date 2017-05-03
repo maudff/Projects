@@ -17,6 +17,7 @@ public:
 	void addLink(Node* node);
 	void removeLink(int key);
 	Node* searchLink(int key);
+	Node* getHead() const;
 	Node* searchLink(unsigned vertex);
 };
 

@@ -11,10 +11,10 @@ private:
 
 public:
 	void pop();
+	bool isEmpty();
 	unsigned peek();
 	Stack(unsigned size);
 	void push(int number);
-
 };
 
 ////////////////////////////////////////////////////////////////

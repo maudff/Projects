@@ -46,8 +46,18 @@ AdjacentList::~AdjacentList()
 {
 	for (unsigned i = 0; i < m_size; i++)
 	{
-		m_adjacentList += i;
-		delete m_adjacentList;
+		SinglyLinkedList* list = m_adjacentList + i;
+		list->~SinglyLinkedList();
+	}
+}
+
+/////////////////////////////////////////////////////////////////////
+
+SinglyLinkedList* AdjacentList::getVertex(int vertex)
+{
+	if (vertex <= m_size && vertex >= 0)
+	{
+		return m_adjacentList + vertex;
 	}
 }
 

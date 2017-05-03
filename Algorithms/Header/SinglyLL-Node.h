@@ -15,7 +15,7 @@ public:
 	Node* m_next;
 	unsigned int m_key;
 	void setNext(Node* node);
-	Node(unsigned adjacentNode);
+	Node(int adjacentNode);
 	const std::string& getElement() const;
 	Node(const std::string& element);
 };
