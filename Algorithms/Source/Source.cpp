@@ -22,15 +22,14 @@ int main()
 	/* AdjacentList Test*/
 	//////////////////////////////////////////////////////////////////
 
-	AdjacentList adjacent(5);
-	adjacent.addEdge(0, 4);
+	AdjacentList adjacent(8);
 	adjacent.addEdge(0, 1);
-	adjacent.addEdge(1, 2);
-	adjacent.addEdge(1, 3);
+	adjacent.addEdge(0, 2);
+	adjacent.addEdge(0, 3);
 	adjacent.addEdge(1, 4);
-	adjacent.addEdge(2, 3);
-	adjacent.addEdge(3, 4);
-	adjacent.queryEdge(2, 3);
+	adjacent.addEdge(2, 6);
+	adjacent.addEdge(2, 7); 
+	adjacent.addEdge(3, 7);
 	
 	/* Binary Search Tree*/
 	//////////////////////////////////////////////////////////////////

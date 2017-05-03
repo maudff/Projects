@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "SinglyLL-Node.h"
 
 class Queue
 {
@@ -10,12 +11,13 @@ private :
 
 public:
 	~Queue();
-	void dequeue();
 	Queue(int size);
 	void enqueue(int number);
 	int& peek();
 	bool isFull();
 	bool isEmpty();
+	void enqueue(Node* node);
+	void dequeue(bool isSInglyNode = false);
 };
 
 
