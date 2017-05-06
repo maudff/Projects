@@ -29,7 +29,7 @@ void Queue::enqueue(int number)
 
 //////////////////////////////////////////////////////////////
 
-void Queue::dequeue( bool isSinglyNode)
+void Queue::dequeue()
 {
 	if (isEmpty())
 	{
@@ -65,11 +65,12 @@ void enqueue(Node* node);
 
 //////////////////////////////////////////////////////////////
 
-int& Queue::peek()
+int Queue::peek()
 {
 	if (isEmpty())
 	{
 		std::cout << "Queue is full" << std::endl;
+		return 0;
 	}
 	else
 	{

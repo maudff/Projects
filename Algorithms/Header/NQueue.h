@@ -11,10 +11,10 @@ private:
 
 public:
 	NQueue();
-	void dequeue();
-	bool isEmpty();
-	unsigned peek();
-	void enqueue(unsigned vertex);
+	unsigned	peek();
+	void		dequeue();
+	bool		isEmpty();
+	void		enqueue(unsigned vertex);
 };
 
 /////////////////////////////////////////////////////////////////////////

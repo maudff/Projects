@@ -4,13 +4,16 @@
 
 void GraphTraversal::BreadthFirstSearch(AdjacentList* list , Node* source)
 {
-	NQueue queue;
-	int* level = new int[list->m_size];
-	bool* visitedNodes = new bool[list->m_size]();
+	unsigned adjListSize = list->getSize();
+	unsigned adjVertex = source->getVertex();
 
-	queue.enqueue(source->m_adjacentVertex);
-	level[source->m_adjacentVertex] = 0;
-	visitedNodes[source->m_adjacentVertex] = true;
+	NQueue queue;
+	int* level = new int[adjListSize];
+	bool* visitedNodes = new bool[adjListSize]();
+
+	queue.enqueue(adjVertex);
+	level[adjVertex] = 0;
+	visitedNodes[adjVertex] = true;
 
 	while (!queue.isEmpty())
 	{
@@ -18,18 +21,20 @@ void GraphTraversal::BreadthFirstSearch(AdjacentList* list , Node* source)
 		queue.dequeue();
 		const SinglyLinkedList* adjacentList = list->getVertex(vertex);
 		const Node* head = adjacentList->getHead();
-		head = head->m_next;
+		head = head->getNext();
 
 		while (head != NULL)
 		{
-			if (!visitedNodes[head->m_adjacentVertex])
+			adjVertex = head->getVertex();
+
+			if (!visitedNodes[adjVertex])
 			{
-				queue.enqueue(head->m_adjacentVertex);
+				queue.enqueue(adjVertex);
 				unsigned num = level[vertex] + 1;
-				level[head->m_adjacentVertex] = num;
-				visitedNodes[head->m_adjacentVertex] = true;
+				level[adjVertex] = num;
+				visitedNodes[adjVertex] = true;
 			}
-			head = head->m_next;
+			head = head->getNext();
 		}
 	}
 
@@ -42,27 +47,32 @@ void GraphTraversal::BreadthFirstSearch(AdjacentList* list , Node* source)
 void GraphTraversal::DepthFirstSearch(AdjacentList& list, Node& source)
 {
 	const Node* node;
-	Stack stack(list.m_size);
+	unsigned size = list.getSize();
 	const SinglyLinkedList* linkedList;
-	stack.push(source.m_adjacentVertex);
-	bool* visitedNodes = new bool[list.m_size]();
-	visitedNodes[source.m_adjacentVertex] = true;
+	unsigned adjVertex = source.getVertex();
+
+	Stack stack(size);
+	stack.push(adjVertex);
+	bool* visitedNodes = new bool[size]();
+	visitedNodes[adjVertex] = true;
+	
 
 	while (!stack.isEmpty())
 	{
 		int vertex = stack.peek();
 		stack.pop();
 		linkedList = list.getVertex(vertex);
-		node = linkedList->getHead()->m_next;
+		node = linkedList->getHead()->getNext();
 
 		while( node != NULL)
 		{
-			if (!visitedNodes[node->m_adjacentVertex])
+			adjVertex = node->getVertex();
+			if (!visitedNodes[adjVertex])
 			{
-				stack.push(node->m_adjacentVertex);
-				visitedNodes[node->m_adjacentVertex] = true;
+				stack.push(adjVertex);
+				visitedNodes[adjVertex] = true;
 			}
-			node = node->m_next;
+			node = node->getNext();
 		}
 	}
 

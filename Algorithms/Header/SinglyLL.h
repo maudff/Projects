@@ -7,18 +7,19 @@
 class SinglyLinkedList
 {
 private:
-	Node* m_head;
-	unsigned m_key;
+	unsigned	m_key;
+	Node*		m_head;
 
 public:
-	~SinglyLinkedList();
 	SinglyLinkedList();
-	void DisplayList()const;
-	void addLink(Node* node);
-	void removeLink(int key);
-	Node* searchLink(int key);
-	Node* getHead() const;
-	Node* searchLink(unsigned vertex);
+	~SinglyLinkedList();
+
+	void				DisplayList()const;
+	void				addLink(Node* node);
+	void				removeLink(int key);
+	Node*				searchLink(int key);
+	Node*				getHead() const;
+	Node*				searchLink(unsigned vertex);
 };
 
 /////////////////////////////////////////////////////

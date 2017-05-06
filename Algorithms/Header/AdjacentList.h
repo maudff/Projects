@@ -5,15 +5,17 @@
 
 class AdjacentList
 {
-public:
+private:
 	unsigned m_size;
 	SinglyLinkedList* m_adjacentList;
 
+public:
 	~AdjacentList();
 	AdjacentList(unsigned size);
-	SinglyLinkedList* getVertex(int vertex);
+	unsigned getSize() const;
 	void addEdge(unsigned vertex, unsigned vertex1);
 	bool queryEdge(unsigned vertex, unsigned vertex1);
+	const SinglyLinkedList* getVertex(int vertex) const;
 };
 
 ///////////////////////////////////////////////////////////////////

@@ -12,12 +12,12 @@ private :
 public:
 	~Queue();
 	Queue(int size);
-	void enqueue(int number);
-	int& peek();
-	bool isFull();
-	bool isEmpty();
-	void enqueue(Node* node);
-	void dequeue(bool isSInglyNode = false);
+	int				peek();
+	bool			isFull();
+	bool			isEmpty();
+	void			dequeue();
+	void			enqueue(int number);
+	void			enqueue(Node* node);
 };
 
 

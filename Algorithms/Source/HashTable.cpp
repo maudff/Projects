@@ -14,7 +14,7 @@ void HashTable::remove(unsigned key)
 	while (m_dataItemPtr[hashIndex] != NULL)
 	{
 		const DataItem* ptr = m_dataItemPtr[hashIndex];
-		if (ptr->m_key == key)
+		if (ptr->getKey() == key)
 		{
 			delete ptr;
 			return;
@@ -49,7 +49,7 @@ void HashTable::insert(DataItem* data)
 		return;
 	}
 
-	unsigned hashIndex = hashFunction(data->m_key);
+	unsigned hashIndex = hashFunction(data->getKey());
 
 	DataItem* ptr = m_dataItemPtr[hashIndex];
 
@@ -81,7 +81,7 @@ const DataItem* HashTable::search(unsigned key)
 	while (m_dataItemPtr[hashIndex] != NULL)
 	{
 		const DataItem* ptr = m_dataItemPtr[hashIndex];
-		if (ptr->m_key == key)
+		if (ptr->getKey() == key)
 		{
 			return ptr;
 		}
@@ -107,6 +107,20 @@ unsigned HashTable::hashFunction(unsigned key)
 DataItem::DataItem(unsigned key, unsigned dataItem) : m_key( key ) , m_dataItem( dataItem )
 {
 
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+int DataItem::getKey() const
+{
+	return m_key;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+
+int DataItem::getdataItem() const
+{
+	return m_dataItem;
 }
 
 /////////////////////////////////////////////////////////////////////////////////

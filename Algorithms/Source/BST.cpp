@@ -12,6 +12,7 @@ BST::BST() : root(NULL)
 void BST::insert(BST_Node* node)
 {
 	BST_Node* temp;
+
 	if (root == NULL)
 	{
 		root = node;
@@ -20,62 +21,62 @@ void BST::insert(BST_Node* node)
 
 	 temp = root;
 
-	if (temp->m_element < node->m_element)
+	if (temp->getElement() < node->getElement())
 	{
-		if (temp->m_right!= NULL)
+		if (temp->getRightNode() != NULL)
 		{
-			temp = temp->m_right;
+			temp = temp->getRightNode();
 			insertElement(node, temp);
 		}
 		else
 		{
-			temp->m_right = node;
+			temp->setRight(node);
 		}
 	}
 	else
-	{
-		if (temp->m_left != NULL)
+	{		
+		if (temp->getLeftNode() != NULL)
 		{
-			temp = temp->m_left;
+			temp = temp->getLeftNode();
 			insertElement(node, temp);
 		}
 		else
 		{
-			temp->m_left = node;
+			temp->setLeft(node);
 		}
 	}
 }
 
 //////////////////////////////////////////////////////////////////
 
-void BST::insertElement(BST_Node* node, BST_Node* parent = NULL)
+void BST::insertElement( BST_Node* node, BST_Node* parent = NULL)
 {
 
 	while (true)
 	{
-		if (parent->m_element < node->m_element)
+		if (parent->getElement() < node->getElement())
 		{
-			if (parent->m_right == NULL)
+			if (parent->getRightNode() == NULL)
 			{
-				parent->m_right = node;
+				parent->setRight(node);
 				break;
 			}
 			else
 			{
-				parent = parent->m_right;
+				parent = parent->getRightNode();
 				continue;
 			}
 		}
 		else
 		{
-			if (parent->m_left == NULL)
+			if (parent->getLeftNode() == NULL)
 			{
-				parent->m_left = node;
+				parent->setLeft(node);
 				break;
 			}
 			else
 			{
-				parent = parent->m_left;
+				parent = parent->getLeftNode();
 				continue;
 			}
 		}

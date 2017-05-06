@@ -40,6 +40,6 @@ int BSA::BinarySearchAlgorithm( const int* arr, unsigned n, int value )
 		
 	}
 
-	std::cout << "Number isj not in Array" << std::endl;
+	std::cout << value << " not in Array" << std::endl;
 	return 0;
 }

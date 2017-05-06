@@ -11,9 +11,9 @@ SinglyLinkedList::SinglyLinkedList() :m_key(0) , m_head(new Node())
 void SinglyLinkedList::DisplayList() const
 {
 	const Node* node;
-	for (node = m_head; node; node = node->m_next)
+	for (node = m_head; node; node = node->getNext())
 	{
-		std::cout <<  &node->getElement()[0] << std::endl;
+		std::cout <<  node->getElement() << std::endl;
 	}
 }
 
@@ -22,13 +22,13 @@ void SinglyLinkedList::DisplayList() const
 void SinglyLinkedList::addLink(Node* node)
 {
 	Node* temp = m_head;
-	while (temp->m_next != NULL)
+	while (temp->getNext() != NULL)
 	{
-		temp = temp->m_next;
+		temp = temp->getNext();
 	}
 	m_key++;
-	node->m_key = m_key;
-	temp->m_next = node;
+	node->setKey(m_key);
+	temp->setNext(node);
 
 }
 
@@ -40,9 +40,9 @@ void SinglyLinkedList::removeLink(int key)
 	Node* lastNode;
 	Node* currNode = searchLink(key);
 
-	for (Node* node = m_head; node; node = node->m_next)
+	for (Node* node = m_head; node; node = node->getNext())
 	{
-		if (node->m_next == currNode)
+		if (node->getNext() == currNode)
 		{
 			prev = node;
 		}
@@ -51,9 +51,9 @@ void SinglyLinkedList::removeLink(int key)
 
 	if (currNode == m_head)
 	{
-		if (m_head->m_next != NULL)
+		if (m_head->getNext() != NULL)
 		{
-			m_head = m_head->m_next;
+			m_head = m_head->getNext();
 			delete currNode;
 			return;
 		}
@@ -64,16 +64,16 @@ void SinglyLinkedList::removeLink(int key)
 	}
 	else if (currNode == lastNode)
 	{
-		if (currNode->m_next != NULL)
+		if (currNode->getNext() != NULL)
 		{
-			prev->m_next = currNode->m_next;
-			currNode->m_next = NULL;
+			prev->setNext(currNode->getNext());
+			currNode->setNext(NULL);
 			delete currNode;
 			return;
 		}
 		else
 		{
-			prev->m_next = NULL;
+			prev->setNext(NULL);
 			delete currNode;
 			return;
 		}
@@ -84,8 +84,8 @@ void SinglyLinkedList::removeLink(int key)
 	}
 	else
 	{
-		prev->m_next = currNode->m_next;
-		currNode->m_next = NULL;
+		prev->setNext(currNode->getNext());
+		currNode->setNext(NULL);
 		delete currNode;
 	}
 
@@ -97,9 +97,9 @@ Node* SinglyLinkedList::searchLink(int key)
 {
 	Node* ptr;
 
-	for (ptr = m_head; ptr; ptr = ptr->m_next)
+	for (ptr = m_head; ptr; ptr = ptr->getNext())
 	{
-		if (key == ptr->m_key)
+		if (key == ptr->getKey())
 		{
 			return ptr;
 		}
@@ -114,9 +114,9 @@ Node*  SinglyLinkedList::searchLink(unsigned vertex)
 {
 	Node* ptr;
 
-	for (ptr = m_head; ptr; ptr = ptr->m_next)
+	for (ptr = m_head; ptr; ptr = ptr->getNext())
 	{
-		if (vertex == ptr->m_adjacentVertex)
+		if (vertex == ptr->getVertex())
 		{
 			return ptr;
 		}
@@ -129,9 +129,9 @@ SinglyLinkedList::~SinglyLinkedList()
 {
 	Node *ptr = m_head;
 
-	while (m_head->m_next != NULL)
+	while (m_head->getNext() != NULL)
 	{
-		m_head = m_head->m_next;
+		m_head = m_head->getNext();
 		delete ptr;
 		ptr = m_head;
 	}

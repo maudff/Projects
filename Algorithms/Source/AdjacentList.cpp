@@ -53,12 +53,19 @@ AdjacentList::~AdjacentList()
 
 /////////////////////////////////////////////////////////////////////
 
-SinglyLinkedList* AdjacentList::getVertex(int vertex)
+const SinglyLinkedList* AdjacentList::getVertex(int vertex) const
 {
 	if (vertex <= m_size && vertex >= 0)
 	{
 		return m_adjacentList + vertex;
 	}
+}
+
+/////////////////////////////////////////////////////////////////////
+
+unsigned AdjacentList::getSize() const
+{
+	return m_size;
 }
 
 /////////////////////////////////////////////////////////////////////

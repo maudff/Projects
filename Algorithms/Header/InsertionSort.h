@@ -4,11 +4,11 @@
 
 class InsertionSort
 {
-public:
-	static void insertionSort(int* arr, int size);
-
 private:
 	static void insertElementInSortedSubList(int j, int* arr);
+
+public:
+	static void insertionSort(int* arr, int size);
 };
 
 //////////////////////////////////////////////////////////////////////

@@ -4,7 +4,11 @@
 
 class Fibonacci
 {
+private:
 	static int rFibonacci(int& f0 ,int& f1 , int i , int number);
+
+	/////////////////////////////////////////////////////////////
+
 public:
 	static int fibonacci(int numbers);
 };

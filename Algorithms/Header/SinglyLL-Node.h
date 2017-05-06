@@ -6,18 +6,26 @@
 class Node
 {
 private:
-	std::string m_element;
+	unsigned		m_key;
+	Node*			m_next;
+	std::string		m_element;
+	unsigned		m_adjacentVertex;
+
+	/////////////////////////////////////////////////////
 
 public:
 	Node();
-	unsigned m_adjacentVertex;
-	Node(const char* element);
-	Node* m_next;
-	unsigned int m_key;
-	void setNext(Node* node);
 	Node(int adjacentNode);
-	const std::string& getElement() const;
+	Node(const char* element);
 	Node(const std::string& element);
+
+	unsigned			getKey() const;
+	Node*				getNext() const;
+	unsigned			getVertex() const;
+	const char*			getElement() const;
+	void				setNext(Node* node);
+	void				setKey(unsigned key);
+	
 };
 
 ////////////////////////////////////////////////////////////
