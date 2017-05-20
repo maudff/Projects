@@ -33,6 +33,18 @@ int main()
 	Fraction f6 = Fraction(1, 2) * Fraction(2, 3) * Fraction(3, 4);
 	f6.print();
 
+	f6 += 4;
+	++f6;
+
+	if (f6 <= f4)
+	{
+		std::cout << "F6 is smaller or equals to f4" << std::endl;
+	}
+	else
+	{
+		std::cout << "F4 is smaller" << std::endl;
+	}
+
 	std::cout << f6 << std::endl;
 
 	return 0;
