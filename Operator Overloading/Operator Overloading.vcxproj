@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\Digit.h" />
     <ClInclude Include="Header\Fraction.h" />
     <ClInclude Include="Header\Penny.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Digit.cpp" />
     <ClCompile Include="Source\Fraction.cpp" />
     <ClCompile Include="Source\Penny.cpp" />
     <ClCompile Include="Source\Source.cpp" />

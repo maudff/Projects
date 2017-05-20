@@ -1,6 +1,6 @@
 #include "Penny.h"
 #include "Fraction.h"
-
+#include "Digit.h"
 
 int main()
 {
@@ -46,6 +46,10 @@ int main()
 	}
 
 	std::cout << f6 << std::endl;
+
+	Digit d(10);
+	std::cout << ++d << std::endl;
+	std::cout << d++ << std::endl;
 
 	return 0;
 }
