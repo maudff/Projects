@@ -11,8 +11,8 @@ private:
 	int m_denominator;
 
 public:
-	void print() const;
 	void operator++();
+	void print() const;
 	void operator+=(int value);
 	Fraction(int numerator, int denominator);
 	friend Fraction operator*(const Fraction& frac, int number);

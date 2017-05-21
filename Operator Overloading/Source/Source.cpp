@@ -50,6 +50,6 @@ int main()
 	Digit d(10);
 	std::cout << ++d << std::endl;
 	std::cout << d++ << std::endl;
-
 	return 0;
 }
+
