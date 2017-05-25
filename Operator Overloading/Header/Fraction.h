@@ -22,7 +22,6 @@ public:
 	friend Fraction operator/(const Fraction& frac, const Fraction& frac1);
 	friend std::ostream& operator<<(std::ostream& out, const Fraction& obj);
 
-
 };
 
 ////////////////////////////////////////////////////////////////////////
