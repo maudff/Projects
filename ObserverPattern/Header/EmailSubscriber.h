@@ -1,0 +1,12 @@
+#pragma once
+#include "Subscriber.h"
+#include "NewsPublisher.h"
+
+//////////////////////////////////////////////////////////////////
+
+class EmailSubscriber : public Subscriber
+{
+	void update(const NewsPublisher& publisher) override;
+};
+
+//////////////////////////////////////////////////////////////////
