@@ -36,8 +36,7 @@ int BSA::BinarySearchAlgorithm( const int* arr, unsigned n, int value )
 		{
 			numberOfElements -= ( numberOfElements / 2 ) + 1;
 		}
-
-		
+	
 	}
 
 	std::cout << value << " not in Array" << std::endl;

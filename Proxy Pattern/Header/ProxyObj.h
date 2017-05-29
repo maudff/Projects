@@ -12,11 +12,9 @@ private:
 	std::string m_second;
 	std::string m_third;
 
-
 public :
 	~ProxyObj();
 	void execute() override;
 	ProxyObj(std::string& str);
 	StringSearch *operator->();
-
 };
