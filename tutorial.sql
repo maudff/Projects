@@ -9,6 +9,27 @@ create table person
     PRIMARY KEY (ID)
 );
 
+create table Student 
+(
+	ID INT NOT NULL AUTO_INCREMENT,
+    NAME VARCHAR(100) , 
+    COURSES VARCHAR(50),
+    PRIMARY KEY(ID)
+);
+
+insert into student(name,courses)
+values("Samian Mo" , "Business Management");
+
+update student set name = "Coleen Mitchell" , courses = "Cloud computing" where id = 3;
+select * from student;
+
+select * from student limit 3; 
+
+select * from student order 
+
+delete from student where id = 4;
+DESC student;
+
 create table employer 
 (
 	ID INT NOT NULL, 
@@ -71,6 +92,8 @@ create table customers
     age int,
     primary key(ID) 
 );
+
+
 
 create table ORDERS
 (
