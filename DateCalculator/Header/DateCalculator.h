@@ -12,7 +12,7 @@ private:
 	Date					m_secondDate;
 
 public:
-	DateCalculator(Date& date, Date& date1);
+	DateCalculator(const Date& date, const Date& date1);
 
 	int						calculateDaysBetweenDates() const;
 	void					setFirstDate(const Date& firstDate);

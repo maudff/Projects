@@ -3,7 +3,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 
-DateCalculator::DateCalculator(Date& date, Date& date1) :m_firstDate(date) , m_secondDate(date1)
+DateCalculator::DateCalculator(const Date& date, const Date& date1) :m_firstDate(date) , m_secondDate(date1)
 {
 }
 

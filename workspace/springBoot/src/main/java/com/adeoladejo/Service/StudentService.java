@@ -11,9 +11,9 @@ import com.adeoladejo.Entity.Student;
 
 @Service
 public class StudentService {
-
+	
 	@Autowired
-	@Qualifier("hibernateSql")
+	@Qualifier("MysqlDb")	
 	private StudentDao studentDao;
 	
 	public Collection<Student> getAllStudents()

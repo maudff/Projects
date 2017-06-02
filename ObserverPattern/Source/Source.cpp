@@ -1,6 +1,8 @@
 #include "SmsSubscriber.h"
 #include "EmailSubscriber.h"
 #include "BusinessPublisher.h"
+#include "boost/shared_ptr.hpp"
+#include "boost/make_shared.hpp"
 
 int main()
 {
@@ -8,7 +10,7 @@ int main()
 	EmailSubscriber sub1;
 	SmsSubscriber sub2;
 	EmailSubscriber sub3;
-	NewsPublisher* publisher = new BusinessPublisher;
+	boost::shared_ptr<NewsPublisher> publisher(boost::make_shared<BusinessPublisher>());
 
 	publisher->attach(sub);
 	publisher->attach(sub1);
@@ -20,6 +22,5 @@ int main()
 
 	publisher->detach(sub3);
 
-	delete publisher;
 	return 0;
 }
