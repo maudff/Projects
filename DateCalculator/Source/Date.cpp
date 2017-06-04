@@ -4,59 +4,48 @@
 
 const unsigned Date::m_numOfdaysInAYear = 365;
 const unsigned	Date::m_numOfdaysInALeapYear = 366;
+const unsigned	Date::m_NumberOfDaysPerMonth[] = { 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31 , 29 };
 
 ////////////////////////////////////////////////////////////////////////////
 
-Date::Date(Bst_Date date) : m_date(date) 
+Date::Date(unsigned day, unsigned month, unsigned year) 
 {
-	m_currDayInAYear.setcurrNumOfDays(calculateCurrNumOfDays());
+	validateDay(day);
+	validateMonth(month);
+	validateYear(year);
+
+	m_day = day;
+	m_month = month;
+	m_year = year;
+	m_currDayNumber = calculateCurrNumOfDays();
 }
 
 ////////////////////////////////////////////////////////////////////////////
 
-int Date::calculateCurrNumOfDays() const
+unsigned Date::calculateCurrNumOfDays() const
 {
 	int currNumOfDays = 0;
-	int month = m_date.month();
 
-	for (int i = 1; i <= month; i++) {
-		if (i == month)
+	for (int i = 1; i <= m_month; i++) {
+		if (i == m_month)
 		{
-			return currNumOfDays += m_date.day();
+			return currNumOfDays += m_day;
 		}
-
-		if (i == JAN || i == MAR || i == MAY || i == JUL || i == AUG || i == OCT || i == DEC)
-		{
-			currNumOfDays += 31;
-		}
-		else if (i == 2)
-		{
-			if (isLeapYear())
-			{
-				currNumOfDays += 29;
-			}
-			else
-			{
-				currNumOfDays += 28;
-			}
-		}
-		else
-		{
-			currNumOfDays += 30;
-		}
+		currNumOfDays += getNumOfDaysInMonth(i);
 	}
+	return currNumOfDays;
 }
 
 ////////////////////////////////////////////////////////////////////////////
 
 bool Date::isLeapYear() const
 {
-	unsigned year = m_date.year();
-	if (year % 4 == 0)
+
+	if (m_year % 4 == 0)
 	{
-		if (year % 100 == 0)
+		if (m_year % 100 == 0)
 		{
-			if (year % 400 == 0)
+			if (m_year % 400 == 0)
 			{
 				return true;
 			}
@@ -80,55 +69,183 @@ bool Date::isLeapYear() const
 
 bool Date::isLeapYear(int year) const
 {
-	boost::gregorian::greg_day day(1);
-	boost::gregorian::greg_month month(1);
-	boost::gregorian::greg_year year1(year);
-
-	Date date(Bst_Date(year1, month, day));
-	return date.isLeapYear();
+	Date d(1, 1, year);
+	return d.isLeapYear();
 }
 
 ////////////////////////////////////////////////////////////////////////////
 
-const Bst_Date& Date::getDate() const
+unsigned Date::getCurrDayNumber() const
 {
-	return m_date;
+	return m_currDayNumber;
 }
 
 ////////////////////////////////////////////////////////////////////////////
 
-void Date::setDate(const Bst_Date& date)
-{
-	m_date = date;
-	m_currDayInAYear.setcurrNumOfDays(calculateCurrNumOfDays());
-}
-
-////////////////////////////////////////////////////////////////////////////
-
-int Date::getCurDayInAYear() const
-{
-	return m_currDayInAYear.getcurrNumOfDays();
-}
-
-////////////////////////////////////////////////////////////////////////////
-
-unsigned Date::getDaysInLeapYear()
+unsigned Date::getTotalDaysInLeapYear()
 {
 	return Date::m_numOfdaysInALeapYear;
 }
 
 ////////////////////////////////////////////////////////////////////////////
 
-unsigned Date::getDaysInYear()
+unsigned Date::getTotalDaysInYear()
 {
 	return Date::m_numOfdaysInAYear;
 }
 
 ////////////////////////////////////////////////////////////////////////////
 
-void Date::setCurrDayInYear(unsigned day)
+int Date::calculateDaysBetweenDates(const Date& secondDate , const Date& firstDate ) 
 {
-	m_currDayInAYear.setcurrNumOfDays(day);
+	int currNumOfDays = 0;
+	int currYear = firstDate.m_year + 1;
+	int firstYear = firstDate.m_year;
+	int secondYear = secondDate.m_year;
+	int diffOfYears = secondYear - firstYear;
+	int currDayInFirstDate = firstDate.getCurrDayNumber();
+	int currDayInSecondDate = secondDate.getCurrDayNumber();
+
+	if (diffOfYears <= 0)
+	{
+		return std::abs(int(currDayInSecondDate - currDayInFirstDate));
+	}
+	else
+	{
+		if (firstDate.isLeapYear())
+		{
+			currNumOfDays = Date::getTotalDaysInLeapYear() - currDayInFirstDate;
+		}
+		else
+		{
+			currNumOfDays = Date::getTotalDaysInYear() - currDayInFirstDate;
+		}
+
+		for (int i = currYear; i <= secondYear; ++i)
+		{
+			if (i == secondYear)
+			{
+				return currNumOfDays += currDayInSecondDate;
+			}
+			else if (firstDate.isLeapYear(i))
+			{
+				currNumOfDays += Date::getTotalDaysInLeapYear();
+			}
+			else
+			{
+				currNumOfDays += Date::getTotalDaysInYear();
+			}
+		}
+	}
+	return currNumOfDays;
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+int Date::operator-(const Date& firstDate)
+{
+	return calculateDaysBetweenDates(*this,firstDate);
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+void Date::validateDay(unsigned day) const
+{
+	std::exception e;
+
+	try
+	{
+		if (day < 1 || day > 31 )
+		{
+			throw e;
+		}
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "Invalid day, day must be between 1 and 31" << std::endl;
+		std::exit(0);
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+void Date::validateYear(unsigned year) const
+{
+	std::exception e;
+
+	try
+	{
+		if (year < 1100)
+		{
+			throw e;
+		}
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "Invalid year, year must be ovr 1100"<< std::endl;
+		std::exit(0);
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+void Date::validateMonth(unsigned month) const
+{
+	std::exception e;
+
+	try
+	{
+		if (month < 1 || month > 12)
+		{
+			throw e;
+		}
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "Invalid month, month must be between 1 and 12" << std::endl;
+		std::exit(0);
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+void Date::setDay(unsigned day)
+{
+	validateDay(day);
+	m_day = day;
+	m_currDayNumber = calculateCurrNumOfDays();
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+void Date::setYear(unsigned year)
+{
+	validateYear(year);
+	m_year = year;
+	m_currDayNumber = calculateCurrNumOfDays();
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+void Date::setMonth(unsigned month)
+{
+	validateMonth(month);
+	m_month = month;
+	m_currDayNumber = calculateCurrNumOfDays();
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+unsigned Date::getNumOfDaysInMonth(int month) const
+{
+	if (month == 2)
+	{
+		if (isLeapYear())
+		{
+			return Date::m_NumberOfDaysPerMonth[12];
+		}
+	}
+	return Date::m_NumberOfDaysPerMonth[month - 1];
 }
 
 ////////////////////////////////////////////////////////////////////////////
