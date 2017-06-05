@@ -4,7 +4,7 @@
 
 const unsigned Date::m_numOfdaysInAYear = 365;
 const unsigned	Date::m_numOfdaysInALeapYear = 366;
-const unsigned	Date::m_NumberOfDaysPerMonth[] = { 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31 , 29 };
+const unsigned	Date::m_NumberOfDaysPerMonth[] = { 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31 };
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -242,7 +242,7 @@ unsigned Date::getNumOfDaysInMonth(int month) const
 	{
 		if (isLeapYear())
 		{
-			return Date::m_NumberOfDaysPerMonth[12];
+			return Date::m_NumberOfDaysPerMonth[month -1 ] + 1;
 		}
 	}
 	return Date::m_NumberOfDaysPerMonth[month - 1];

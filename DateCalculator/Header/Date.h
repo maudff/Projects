@@ -14,10 +14,10 @@ private:
 	static const unsigned	m_numOfdaysInALeapYear;
 	static const unsigned	m_NumberOfDaysPerMonth[];
 
+	unsigned				calculateCurrNumOfDays() const;
 	void					validateDay(unsigned day) const;
 	void					validateYear(unsigned year) const;
 	void					validateMonth(unsigned month)const;
-	unsigned				calculateCurrNumOfDays() const;
 	unsigned				getNumOfDaysInMonth(int month)const;
 	int						calculateDaysBetweenDates(const Date& secondDate, const Date& firstDate);
 
