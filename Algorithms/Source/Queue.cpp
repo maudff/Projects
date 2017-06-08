@@ -1,7 +1,7 @@
 #include "Queue.h"
 //////////////////////////////////////////////////////////////
 
-Queue::Queue(int size) : m_size(size) , m_queue( new int[size]) , m_numOfElements( 0 )
+Queue::Queue(int size) : m_size(size) , m_rear(0),m_queue( new int[size]) , m_front(0) , m_numOfElements( 0 )
 {
 
 }
@@ -23,7 +23,8 @@ void Queue::enqueue(int number)
 		return;
 	}
 
-	m_queue[m_numOfElements] = number;
+	++m_rear;
+	m_queue[m_rear] = number;
 	++m_numOfElements;
 }
 
@@ -36,32 +37,11 @@ void Queue::dequeue()
 		std::cout << "Queue is empty" << std::endl;
 		return;
 	}
-	else if (m_numOfElements == 1)
-	{
-		m_queue[m_numOfElements - 1] = 0;
-	}
-	else
-	{
-		for (unsigned i = 1; i < m_numOfElements; i++)
-		{
-			if (i == m_numOfElements - 1)
-			{
-				m_queue[i - 1] = m_queue[i];
-				m_queue[i] = 0;
-			}
-			else
-			{
-				m_queue[i - 1] = m_queue[i];
-			}
-		}
-	}
 
+	m_queue[m_front] = NULL;
+	++m_front;
 	--m_numOfElements;
 }
-
-//////////////////////////////////////////////////////////////
-
-void enqueue(Node* node);
 
 //////////////////////////////////////////////////////////////
 
@@ -74,8 +54,8 @@ int Queue::peek()
 	}
 	else
 	{
-		std::cout << "Number is " << m_queue[0] << std::endl;
-		return m_queue[0];
+		std::cout << "Number is " << m_queue[m_front] << std::endl;
+		return m_queue[m_front];
 	}
 }
 

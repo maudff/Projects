@@ -2,13 +2,17 @@
 #include <iostream>
 #include "SinglyLL-Node.h"
 
+////////////////////////////////////////////////////////////////////////////////
+
 class Queue
 {
 private :
 	unsigned	m_size;
+	unsigned	m_rear;
 	int*		m_queue;
+	unsigned	m_front;
 	unsigned	m_numOfElements;
-
+	
 public:
 	~Queue();
 	Queue(int size);
@@ -17,7 +21,6 @@ public:
 	bool			isEmpty();
 	void			dequeue();
 	void			enqueue(int number);
-	void			enqueue(Node* node);
 };
 
-
+////////////////////////////////////////////////////////////////////////////////
